@@ -10,6 +10,7 @@ Use EDK2 to build eif under Windows OS
 
 EDK2是Intel根據[UEFI規範(wiki)](https://zh.wikipedia.org/wiki/%E7%B5%B1%E4%B8%80%E5%8F%AF%E5%BB%B6%E4%BC%B8%E9%9F%8C%E9%AB%94%E4%BB%8B%E9%9D%A2)所開發的開源專案 已經包含一些sample code和UEIF BIOS開發工具 是目前最多開發者所依照使用的方法
 
+
 2.Install ASL complier
 
 下載並安裝[ASL編譯器(.zip)](https://acpica.org/sites/acpica/files/iasl-win-20190405.zip) (建議解壓到c:\asl)
@@ -21,9 +22,11 @@ ASL 是用來編譯ACPI(Advanced Configuration and Power Interface)的編譯器 
 ![ACPI table on RW tool](https://user-images.githubusercontent.com/29775017/208063984-d8b1c20f-4e9d-4da5-9f73-6dd99fe1041c.png)
 
 
+
 3.Intsall NASM complier
 
 下載並安裝[NASM編譯器(.zip)](https://www.nasm.us/pub/nasm/releasebuilds/2.14.02/win64/nasm-2.14.02-win64.zip) (建議解壓到c:\nasm)
+
 
 
 
