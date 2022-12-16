@@ -1,9 +1,10 @@
 # buildEfi_onWindosOS
 Use EDK2 to build eif under Windows OS
+==================================
 
 # Set up enviroment
 1.Down load UEFI open sourse--EDK2
-
+----------------------------
 下載intel在git上維護的專案[tianocore/edk2](https://github.com/tianocore/edk2.git)
 
 或用git指令 ```git https://github.com/tianocore/edk2.git <你的新創資料夾>``` (<你的新創資料夾>以下用EDKII代替)
@@ -11,7 +12,7 @@ Use EDK2 to build eif under Windows OS
 EDK2是Intel根據[UEFI規範(wiki)](https://zh.wikipedia.org/wiki/%E7%B5%B1%E4%B8%80%E5%8F%AF%E5%BB%B6%E4%BC%B8%E9%9F%8C%E9%AB%94%E4%BB%8B%E9%9D%A2)所開發的開源專案 已經包含一些sample code和UEIF BIOS開發工具 是目前最多開發者所依照使用的方法
 
 
-2.Install ASL complier
+## 2.Install ASL complier
 
 下載並安裝[ASL編譯器(.zip)](https://acpica.org/sites/acpica/files/iasl-win-20190405.zip) (建議解壓到c:\asl)
 
