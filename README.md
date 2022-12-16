@@ -4,7 +4,7 @@ Use EDK2 to build eif under Windows OS
 # Set up enviroment
 1.Down load UEFI open sourse--EDK2
 下載intel在git上維護的專案[tianocore/k2](https://github.com/tianocore/edk2.git)
-或用git指令 '''git https://github.com/tianocore/edk2.git <你的新創資料夾>'''
+或用git指令 ```git https://github.com/tianocore/edk2.git <你的新創資料夾>```
 
 
 2.Install ASL complier
