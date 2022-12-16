@@ -1,9 +1,8 @@
 # buildEfi_onWindosOS
 Use EDK2 to build eif under Windows OS
 
-
 # Set up enviroment
-##1.Down load UEFI open sourse--EDK2
+## 1.Down load UEFI open sourse--EDK2
 
 下載intel在git上維護的專案[tianocore/edk2](https://github.com/tianocore/edk2.git)
 
@@ -23,15 +22,12 @@ ASL 是用來編譯ACPI(Advanced Configuration and Power Interface)的編譯器 
 ![ACPI table on RW tool](https://user-images.githubusercontent.com/29775017/208063984-d8b1c20f-4e9d-4da5-9f73-6dd99fe1041c.png)
 
 
-
-3.Intsall NASM complier
+## 3.Intsall NASM complier
 
 下載並安裝[NASM編譯器(.zip)](https://www.nasm.us/pub/nasm/releasebuilds/2.14.02/win64/nasm-2.14.02-win64.zip) (建議解壓到c:\nasm)
 
 
-
-
-4.Modify target.txt
+## 4.Modify target.txt
 
 在EDKII 新創Test\test.dsc
 
