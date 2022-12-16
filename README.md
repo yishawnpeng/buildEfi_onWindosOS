@@ -27,3 +27,4 @@ Use EDK2 to build eif under Windows OS
 3.Run .efi
 
 # Remark
+1.F9
