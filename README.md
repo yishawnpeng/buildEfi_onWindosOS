@@ -51,19 +51,20 @@ NASM (Netwide Assembler) 基於intel x86架構的組譯和反組譯工具 [wiki�
 ## 1.Add new .dsc/.inf/.c in \Test
 ![image](https://user-images.githubusercontent.com/29775017/208332408-517820bb-38fd-49d6-b8c5-d90cc3be68de.png)
 
-(1) test.dsc *註2
-```[Defines]
+(1) test.dsc 
+```
+[Defines]
   PLATFORM_NAME                  = test
-  PLATFORM_GUID                  = a7af8bac-1291-453b-ac50-9edc786b41e2
+  PLATFORM_GUID                  = a7af8bac-1291-453b-ac50-9edc786b41e2  #到網路上新建一個GUID
   PLATFORM_VERSION               = 0.98
   DSC_SPECIFICATION              = 0x00010005
-  OUTPUT_DIRECTORY               = Build/testOutput
-  SUPPORTED_ARCHITECTURES        = IA32|X64
-  BUILD_TARGETS                  = DEBUG|RELEASE|NOOPT
+  OUTPUT_DIRECTORY               = Build/testOutput                      #testOutput可以自己取
+  SUPPORTED_ARCHITECTURES        = IA32|X64                              #可以只要X64
+  BUILD_TARGETS                  = DEBUG|RELEASE|NOOPT                   #可以只要release
   SKUID_IDENTIFIER               = DEFAULT
 
   
-[LibraryClasses]
+[LibraryClasses]  #必須的lib 可以試看看 少一個都會叫你安裝
   UefiApplicationEntryPoint|MdePkg/Library/UefiApplicationEntryPoint/UefiApplicationEntryPoint.inf
   UefiLib|MdePkg/Library/UefiLib/UefiLib.inf
   PcdLib|MdePkg/Library/BasePcdLibNull/BasePcdLibNull.inf
@@ -78,9 +79,68 @@ NASM (Netwide Assembler) 基於intel x86架構的組譯和反組譯工具 [wiki�
   UefiRuntimeServicesTableLib|MdePkg/Library/UefiRuntimeServicesTableLib/UefiRuntimeServicesTableLib.inf
   
   
-[Components]
+[Components]  #你的inf 
   Test\HelloWorld.inf
   ```
+  
+(2) HelloWorld.inf
+```
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = HelloWorld
+  FILE_GUID                      = d47f3064-f65b-4779-8f57-114fe12df518 #到網路上新建一個GUID
+  MODULE_TYPE                    = UEFI_APPLICATION                     #我們用UEFI APP即可
+  VERSION_STRING                 = 1.0                                  #非必要
+  ENTRY_POINT                    = UefiMain                             #你的.c的入口函數(即你要執行的函數 通常用main)
+
+[Sources]             #你的.c
+  HelloWorld.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+
+[LibraryClasses]
+  UefiApplicationEntryPoint
+  UefiLib
+```
+
+(3) HelloWorld.c
+```
+#include <Uefi.h>
+#include <Library/UefiLib.h>
+
+//
+// String token ID of help message text.
+// Shell supports to find help message in the resource section of an application image if
+// .MAN file is not found. This global variable is added to make build tool recognizes
+// that the help string is consumed by user and then build tool will add the string into
+// the resource section. Thus the application can use '-?' option to show help message in
+// Shell.
+//
+
+/**
+  The user Entry Point for Application. The user code starts with this function
+  as the real entry point for the application.
+
+  @retval EFI_SUCCESS       The entry point is executed successfully.
+  @retval other             Some error occurs when executing this entry point.
+
+**/
+EFI_STATUS
+EFIAPI
+UefiMain (
+  )
+{
+  UINT32  Index;
+  Index = 0;
+  Print(L"%02x/n", Index);    #Print()是EDKII的函數   %x印出通用   字串前面用L代表
+  
+  Print(L"HellowWord/n");     #如果沒有/n 前面幾個字會被shell>>會被吃掉
+
+  return EFI_SUCCESS;
+}
+```
 
 
 ## 2.Setup and build
@@ -97,6 +157,6 @@ NASM (Netwide Assembler) 基於intel x86架構的組譯和反組譯工具 [wiki�
 # Remark
 1.isolate memary
 
-2.PLATFORM_GUID OUTPUT_DIRECTORY
+2.
 
 .F9
