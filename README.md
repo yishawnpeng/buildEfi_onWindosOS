@@ -134,25 +134,44 @@ UefiMain (
 {
   UINT32  Index;
   Index = 0;
-  Print(L"%02x/n", Index);    #Print()是EDKII的函數   %x印出通用   字串前面用L代表
+  Print(L"%02x/n", Index);    //Print()是EDKII的函數   %x印出通用   字串前面用L代表
   
-  Print(L"HellowWord/n");     #如果沒有/n 前面幾個字會被shell>>會被吃掉
+  Print(L"HellowWord/n");     //如果沒有/n 前面幾個字會被shell>>會被吃掉
 
   return EFI_SUCCESS;
 }
 ```
 
-
 ## 2.Setup and build
 
+重新在EDKII執行```edksetup.bat``` 因為我們有修改.inf/.dsc
+
+就可以```build```直接build (若後續只有改.c檔也可以直接build不用重新setup)
+
+若setup有error通常是相對路徑或是lib有缺
+
 ## 3.Output file
+
+build 出來的檔案會在你 test.dsc 的```OUTPUT_DIRECTORY = Build/testOutput```的位置
+
+以我的舉例是\EDKII\Build\testOutput\RELEASE_VS2015x86\X64\Test\HelloWorld\OUTPUT\HelloWorld.efi
+
+(但其實 \EDKII\Build\testOutput\RELEASE_VS2015x86\X64\ 底下也會有 我目前還不確認有兩個相同的檔案用意)
 
 # Testing
 1.Make a UEFI shell USB
 
+製作方法可以參考[其一](https://twgreatdaily.com/eQQf6GwBJleJMoPMFhsQ.html)或[其二](https://storage-asset.msi.com/file/pdf/Win8_BIOS_Update_Step_by_Step_Guide_ch.pdf)的前半部分
+
+重點是格式化 USB 為 fat32 格式和
+
 2.Put build .efi into file
 
+將 HelloWorld.efi 放到 usb 裡面
+
 3.Run .efi
+
+![image](https://user-images.githubusercontent.com/29775017/208379215-1a50411b-1aef-46a1-b22b-94cac053997d.png)
 
 # Remark
 1.isolate memary
