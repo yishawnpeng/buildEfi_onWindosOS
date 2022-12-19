@@ -31,7 +31,7 @@ NASM (Netwide Assembler) 基於intel x86架構的組譯和反組譯工具 [wiki�
 
 ## 4.Modify target.txt
 
-在EDKII 新創Test\test.dsc
+在EDKII 新創Test\test.dsc (下1)
 
 並在EDKII執行```edksetup.bat``` 他會建立一些暫時的環境變數還有建立並複製build所需的相關檔案
 
@@ -51,13 +51,13 @@ NASM (Netwide Assembler) 基於intel x86架構的組譯和反組譯工具 [wiki�
 ## 1.Add new .dsc/.inf/.c in \Test
 ![image](https://user-images.githubusercontent.com/29775017/208332408-517820bb-38fd-49d6-b8c5-d90cc3be68de.png)
 
-(1) .dsc
+(1) test.dsc *註2
 ```[Defines]
-  PLATFORM_NAME                  = be
+  PLATFORM_NAME                  = test
   PLATFORM_GUID                  = a7af8bac-1291-453b-ac50-9edc786b41e2
   PLATFORM_VERSION               = 0.98
   DSC_SPECIFICATION              = 0x00010005
-  OUTPUT_DIRECTORY               = Build/be
+  OUTPUT_DIRECTORY               = Build/testOutput
   SUPPORTED_ARCHITECTURES        = IA32|X64
   BUILD_TARGETS                  = DEBUG|RELEASE|NOOPT
   SKUID_IDENTIFIER               = DEFAULT
@@ -82,6 +82,7 @@ NASM (Netwide Assembler) 基於intel x86架構的組譯和反組譯工具 [wiki�
   Test\HelloWorld.inf
   ```
 
+
 ## 2.Setup and build
 
 ## 3.Output file
@@ -96,4 +97,6 @@ NASM (Netwide Assembler) 基於intel x86架構的組譯和反組譯工具 [wiki�
 # Remark
 1.isolate memary
 
-2.F9
+2.PLATFORM_GUID OUTPUT_DIRECTORY
+
+.F9
