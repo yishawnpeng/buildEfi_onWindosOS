@@ -184,4 +184,4 @@ build 出來的檔案會在你 test.dsc 的```OUTPUT_DIRECTORY = Build/testOutpu
 
 若 OS 是 Win10 需要關掉核心隔離(Core isolation)並重新開機 ,而 Win11 還需 win+R 輸入 regedit 修改 ```HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI\Config\VulnerableDriverBlocklistEnable``` 為0
 
-才能執行RW
+才能執行RW.exe
