@@ -15,7 +15,7 @@ EDK2是Intel根據[UEFI規範(wiki)](https://zh.wikipedia.org/wiki/%E7%B5%B1%E4%
 
 下載並安裝[ASL編譯器(.zip)](https://acpica.org/sites/acpica/files/iasl-win-20190405.zip) (建議解壓到c:\asl)
 
-ASL 是用來編譯ACPI(Advanced Configuration and Power Interface)的編譯器 類似GNN與C++的關係 編譯後為AML code 是一種bytecode 需要OS解釋後才執行
+ASL 是用來編譯ACPI(Advanced Configuration and Power Interface)的編譯器 編譯後為AML(是一種bytecode 在OS解釋後執行)
 
 (利用RW.exe 開啟ACPI table的畫面 *註1)
 
@@ -24,7 +24,9 @@ ASL 是用來編譯ACPI(Advanced Configuration and Power Interface)的編譯器 
 
 ## 3.Intsall NASM complier
 
-下載並安裝[NASM編譯器(.zip)](https://www.nasm.us/pub/nasm/releasebuilds/2.14.02/win64/nasm-2.14.02-win64.zip) (建議解壓到c:\nasm)
+下載並安裝[NASM組譯器(.zip)](https://www.nasm.us/pub/nasm/releasebuilds/2.14.02/win64/nasm-2.14.02-win64.zip) (建議解壓到c:\nasm)
+
+NASM (Netwide Assembler) 基於intel x86架構的組譯和反組譯工具 [wiki補充](https://zh.wikipedia.org/zh-tw/Netwide_Assembler)
 
 
 ## 4.Modify target.txt
@@ -46,11 +48,43 @@ ASL 是用來編譯ACPI(Advanced Configuration and Power Interface)的編譯器 
 
 # Coding and build 
 
-1.Add new .dsc/.inf/.c
+## 1.Add new .dsc/.inf/.c in \Test
+![image](https://user-images.githubusercontent.com/29775017/208332408-517820bb-38fd-49d6-b8c5-d90cc3be68de.png)
 
-2.Setup and build
+(1) .dsc
+```[Defines]
+  PLATFORM_NAME                  = be
+  PLATFORM_GUID                  = a7af8bac-1291-453b-ac50-9edc786b41e2
+  PLATFORM_VERSION               = 0.98
+  DSC_SPECIFICATION              = 0x00010005
+  OUTPUT_DIRECTORY               = Build/be
+  SUPPORTED_ARCHITECTURES        = IA32|X64
+  BUILD_TARGETS                  = DEBUG|RELEASE|NOOPT
+  SKUID_IDENTIFIER               = DEFAULT
 
-3.Output file
+  
+[LibraryClasses]
+  UefiApplicationEntryPoint|MdePkg/Library/UefiApplicationEntryPoint/UefiApplicationEntryPoint.inf
+  UefiLib|MdePkg/Library/UefiLib/UefiLib.inf
+  PcdLib|MdePkg/Library/BasePcdLibNull/BasePcdLibNull.inf
+  DebugLib|MdePkg/Library/BaseDebugLibNull/BaseDebugLibNull.inf
+  BaseMemoryLib|MdePkg/Library/BaseMemoryLib/BaseMemoryLib.inf
+  BaseLib|MdePkg/Library/BaseLib/BaseLib.inf
+  RegisterFilterLib|MdePkg/Library/RegisterFilterLibNull/RegisterFilterLibNull.inf
+  PrintLib|MdePkg/Library/BasePrintLib/BasePrintLib.inf
+  MemoryAllocationLib|MdePkg/Library/UefiMemoryAllocationLib/UefiMemoryAllocationLib.inf
+  UefiBootServicesTableLib|MdePkg/Library/UefiBootServicesTableLib/UefiBootServicesTableLib.inf
+  DevicePathLib|MdePkg/Library/UefiDevicePathLib/UefiDevicePathLib.inf
+  UefiRuntimeServicesTableLib|MdePkg/Library/UefiRuntimeServicesTableLib/UefiRuntimeServicesTableLib.inf
+  
+  
+[Components]
+  Test\HelloWorld.inf
+  ```
+
+## 2.Setup and build
+
+## 3.Output file
 
 # Testing
 1.Make a UEFI shell USB
