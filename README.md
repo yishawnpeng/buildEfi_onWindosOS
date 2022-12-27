@@ -98,7 +98,7 @@ NASM (Netwide Assembler) 基於 intel x86 架構的組譯和反組譯工具 [wik
 
 [Packages]
   MdePkg/MdePkg.dec
-  MdeModulePkg/MdeModulePkg.dec
+  #for include <Uefh> include <Library/UefiLib.h> in .c
 
 [LibraryClasses]
   UefiApplicationEntryPoint
@@ -140,6 +140,13 @@ UefiMain (
 
   return EFI_SUCCESS;
 }
+```
+
+(4)\MdeModulePkgMdeModulePkg.dec
+將下列註解
+```
+[Includes.Common.Private]
+  #Library/BrotliCustomDecompressLib/brotli/c/include
 ```
 
 ## 2.Setup and build
