@@ -15,6 +15,9 @@ EDK2 是 Intel 根據[UEFI規範(wiki)](https://zh.wikipedia.org/wiki/%E7%B5%B1%
 
 下載並安裝[ASL編譯器(.zip)](https://acpica.org/sites/acpica/files/iasl-win-20190405.zip) (建議解壓到 c:\asl)
 
+> **Note**  
+> 或可參考微軟的[ASL編譯器](https://learn.microsoft.com/zh-tw/windows-hardware/drivers/bringup/microsoft-asl-compiler)
+
 ASL 是用來編譯 ACPI(Advanced Configuration and Power Interface)的編譯器 編譯後為 AML(是一種 bytecode 在 OS 解釋後執行)
 
 (利用 RW.exe 開啟 ACPI table 的畫面 *註1)
@@ -24,10 +27,12 @@ ASL 是用來編譯 ACPI(Advanced Configuration and Power Interface)的編譯器
 
 ## 3.Intsall NASM complier
 
-下載並安裝[NASM組譯器(.zip)](https://www.nasm.us/pub/nasm/releasebuilds/2.14.02/win64/nasm-2.14.02-win64.zip) (建議解壓到 c:\nasm)
+下載並安裝[NASM組譯器v2.16(.zip)](https://www.nasm.us/pub/nasm/releasebuilds/2.16/win64/nasm-2.16-win64.zip) (建議解壓到 c:\nasm)
 
 NASM (Netwide Assembler) 基於 intel x86 架構的組譯和反組譯工具 [wiki補充](https://zh.wikipedia.org/zh-tw/Netwide_Assembler)
 
+> **Note**  
+> [NASM所有版本](https://www.nasm.us/pub/nasm/releasebuilds/)
 
 ## 4.Modify target.txt
 
@@ -148,6 +153,10 @@ UefiMain (
 [Includes.Common.Private]
   #Library/BrotliCustomDecompressLib/brotli/c/include
 ```
+> **Note**  
+> 若沒有要建\Test\test.dsc 而是原本的\MdeModulePkg\MdeModulePkg.dsc則不能註解  
+> 但需要自己下載\MdeModulePkg\Universal\RegularExpressionDxe\oniguruma 的資料夾(EDK2 git  相對位置)  
+> 不知道為甚麼git 下載會略過此資料夾
 
 ## 2.Setup and build
 
